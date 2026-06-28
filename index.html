@@ -813,7 +813,8 @@
     function updatePreview() {
       const html = htmlInput.value.trim();
       const css = `<style>${cssInput.value}</style>`;
-      preview.innerHTML = html ? css + html : '';
+      const previewRoot = preview.shadowRoot || preview.attachShadow({ mode: 'open' });
+      previewRoot.innerHTML = html ? css + html : '';
     }
 
     function normalized(value) {
